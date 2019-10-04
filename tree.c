@@ -7,7 +7,7 @@
 
 int main(void)
 {
-    tree(1);
+    tree();
     return(0);
 }
 
@@ -18,26 +18,30 @@ void my_putchar(char c)
 
 int shape_creation(void)
 {
-    my_putchar(42);
-    my_putchar('\n');
+
 }
 
 void tree(int size)
 {
-    int i = 0;
-    int *coef_multi = i;
-
-    while (coef_multi < size) {
-        coef_multi++;
-}
-    shape_creation();
     trunk();
 }
 
 int trunk(void)
 {
-    my_putchar(124);
-    my_putchar('\n');
+    int i;
+    int j;
+    int size = 3;
+
+    for (i = 0; i <= size - 1; i++) {
+        my_putchar('|');
+        for ( j = 0; j <= size -2; j++) {
+            my_putchar('|');
+        }
+        my_putchar('\n');
+    }
+            
+    
+    
 }
 
 int new_floor(void)
