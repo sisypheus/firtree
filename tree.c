@@ -5,48 +5,76 @@
 ** ascii resizable fir tree
 */
 
-int main(void)
+void my_putchar(char c);
+
+int base_calculation(int size)
 {
-    tree();
-    return(0);
+    int lines = 4;
+    int retention = 1;
+    int length = 1;
+
+    for (int i = 0; i < size; i++) {
+        for (int i = 0; i <  lines; i++) {
+            length += 2;
+        }
+        if (i % 2 == 0)
+            retention++;
+        length -= 2 * retention;
+        lines++;
+    }
+    length += 2 * retention;
+    return (length);
 }
 
-void my_putchar(char c)
+void shape_creation(int size, int base)
 {
-    write(1, &c, 1);
+    int lines = 4;
+    int retention = 1;
+    int length = 1;
+    int spaces;
+
+    for (int i = 0; i < size; i++) {
+        for (int i = 0; i <  lines; i++) {
+            spaces = ((base - length) / 2) - 1;
+            line_creation(length, spaces);
+            length += 2;
+        }
+        if (i % 2 == 0)
+            retention++;
+        length -= 2 * retention;
+        lines++;
+    }
+    length += 2 * retention;
+    return (length);
 }
 
-int shape_creation(void)
+int line_creation(int leaves, int spaces)
 {
+    for (int i = 0; i < spaces; i++)
+        my_putchar(' ');
+    for (int i = 0; i < leaves; i++)
+        my_putchar('*');
+    my_putchar('\n');
+}
 
+int trunk(int size, int base)
+{
+    int previous_size = size;
+
+    if (size % 2 == 0)
+        size++;
+    for (int i = 0; i < previous_size; i++) {
+        for (int i = 0; i < (base - size) / 2 - 1; i++)
+            my_putchar(' ');
+        for (int i = 0; i < size; i++)
+            my_putchar('|');
+        my_putchar('\n');
+    }
 }
 
 void tree(int size)
 {
-    trunk();
+    int base = base_calculation(size);
+    shape_creation(size, base);
+    trunk(size, base);
 }
-
-int trunk(void)
-{
-    int i;
-    int j;
-    int size = 3;
-
-    for (i = 0; i <= size - 1; i++) {
-        my_putchar('|');
-        for ( j = 0; j <= size -2; j++) {
-            my_putchar('|');
-        }
-        my_putchar('\n');
-    }
-            
-    
-    
-}
-
-int new_floor(void)
-{    
-
-
-}
-
