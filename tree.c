@@ -5,7 +5,13 @@
 ** ascii resizable fir tree
 */
 
+#include <stdlib.h>
+#include <stdio.h>
+
 void my_putchar(char c);
+void line_creation(int leaves, int spaces);
+int base_calculation(int size);
+int shape_creation(int size, int base);
 
 int base_calculation(int size)
 {
@@ -26,7 +32,7 @@ int base_calculation(int size)
     return (length);
 }
 
-void shape_creation(int size, int base)
+int shape_creation(int size, int base)
 {
     int lines = 4;
     int retention = 1;
@@ -48,7 +54,7 @@ void shape_creation(int size, int base)
     return (length);
 }
 
-int line_creation(int leaves, int spaces)
+void line_creation(int leaves, int spaces)
 {
     for (int i = 0; i < spaces; i++)
         my_putchar(' ');
@@ -57,7 +63,7 @@ int line_creation(int leaves, int spaces)
     my_putchar('\n');
 }
 
-int trunk(int size, int base)
+void trunk(int size, int base)
 {
     int previous_size = size;
 
@@ -77,4 +83,16 @@ void tree(int size)
     int base = base_calculation(size);
     shape_creation(size, base);
     trunk(size, base);
+}
+
+int main(int ac, char **av)
+{
+    if (ac != 2) {
+        printf("Invalid input\n");
+        return (84);
+    } else if (atoi(av[1]) > 0 && atoi(av[1]) < 6) {
+        tree(atoi(av[1]));
+        return (0);
+    }
+    return (0);
 }
